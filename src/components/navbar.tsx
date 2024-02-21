@@ -102,12 +102,10 @@ export function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between">
         <Typography
-          as="a"
-          href="https://www.material-tailwind.com"
-          target="_blank"
-          className="text-lg font-bold"
+          className="text-lg font-bold cursor-pointer"
           color={isScrolling ? "blue-gray" : "white"}
           placeholder={undefined}
+          onClick={() => scrollToAnchor("home")}
         >
           Megawood Capital
         </Typography>
