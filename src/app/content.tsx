@@ -5,6 +5,7 @@ import Image from "next/image";
 import { client } from "../sanity";
 import { Button, Typography } from "@material-tailwind/react";
 import ScrollAnimation from "react-animate-on-scroll";
+import { DefaultSkeleton } from "@/components";
 
 interface DataItem {
   titleOne: string;
@@ -22,8 +23,10 @@ type DataArrayType = Array<DataItem>;
 
 export function Content() {
   const [data, setData] = React.useState<DataItem>();
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
+    setIsLoading(true);
     client
       .fetch(
         `*[_type == "content"]{
@@ -40,8 +43,20 @@ export function Content() {
       )
       .then((data: DataArrayType) => {
         setData(data?.[0]);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="my-0 mx-auto py-2 px-8 flex flex-col gap-4">
+        <DefaultSkeleton />
+        <DefaultSkeleton />
+        <DefaultSkeleton />
+        <DefaultSkeleton />
+      </div>
+    );
+  }
 
   return (
     <section id="aboutUs" className="py-2 px-8 pt-10">

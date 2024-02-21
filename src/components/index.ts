@@ -10,3 +10,5 @@ export * from "./blog-post-card";
 export * from "./blog-card-with-image";
 export * from "./simple-blog-card";
 export * from "./fixed-plugin";
+export * from "./default-skeleton"
+export * from "./card-skeleton"

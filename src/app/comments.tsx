@@ -5,6 +5,7 @@ import { client } from "../sanity";
 import { Typography } from "@material-tailwind/react";
 
 import MemberCard from "@/components/member-card";
+import { CardSkeleton } from "@/components";
 
 interface DataItem {
   image: string;
@@ -38,8 +39,10 @@ const MEMBERS = [
 
 export function Comments() {
   const [data, setData] = React.useState<DataArrayType>();
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
+    setIsLoading(true);
     client
       .fetch(
         `*[_type == "members"]{
@@ -51,11 +54,15 @@ export function Comments() {
       )
       .then((data: DataArrayType) => {
         setData(data);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
-    <section id="teamMember" className="w-full max-w-2xl mx-auto flex flex-col px-5 pb-20 pt-20">
+    <section
+      id="teamMember"
+      className="w-full max-w-2xl mx-auto flex flex-col px-5 pb-20 pt-20"
+    >
       <Typography
         variant="h2"
         className=" md:text-center"
@@ -64,13 +71,22 @@ export function Comments() {
       >
         Team Members
       </Typography>
-      {data?.length && (
-        <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {data?.map((props, idx) => (
-            <MemberCard key={idx} {...props} />
-          ))}
-        </div>
-      )}
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {data?.length && (
+          <>
+            {data?.map((props, idx) => (
+              <MemberCard key={idx} {...props} />
+            ))}
+          </>
+        )}
+        {isLoading && (
+          <>
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />
+          </>
+        )}
+      </div>
     </section>
   );
 }

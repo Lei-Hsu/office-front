@@ -6,7 +6,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
 
 // sections
-import Hero from "./hero";
+import Banner from "./banner";
 import Content from "./content";
 import Comments from "./comments";
 import BlogPosts from "./blog-posts";
@@ -16,7 +16,7 @@ export default function Campaign() {
     <>
       <Navbar />
       <ScrollAnimation animateIn="fadeIn">
-        <Hero />
+        <Banner />
       </ScrollAnimation>
       <Content />
       <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
@@ -25,9 +25,7 @@ export default function Campaign() {
       <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
         <BlogPosts />
       </ScrollAnimation>
-      <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-        <Footer />
-      </ScrollAnimation>
+      <Footer />
     </>
   );
 }
