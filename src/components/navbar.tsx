@@ -55,7 +55,7 @@ export function Navbar() {
 
   const NavItem = ({ title, anchor }: { title: string; anchor: string }) => {
     return (
-      <li>
+      <li key={title}>
         <Typography
           variant="paragraph"
           className={`flex items-center cursor-pointer gap-2 font-medium ${
@@ -116,8 +116,8 @@ export function Navbar() {
             isScrolling ? "text-gray-900" : "text-white"
           }`}
         >
-          {NAV_MENU.map((item) => (
-            <div key={item?.title}>
+          {NAV_MENU.map((item, index) => (
+            <div key={index}>
               <NavItem title={item?.title} anchor={item?.anchor} />
             </div>
           ))}
@@ -141,8 +141,8 @@ export function Navbar() {
       <Collapse open={open}>
         <div className="container mx-auto bg-white rounded-lg py-4 px-6 mt-3 border-t border-gray-200">
           <ul className="flex flex-col gap-4">
-            {NAV_MENU.map((item) => (
-              <div key={item?.title}>
+            {NAV_MENU.map((item, index) => (
+              <div key={index}>
                 <MobileNavItem title={item?.title} anchor={item?.anchor} />
               </div>
             ))}
