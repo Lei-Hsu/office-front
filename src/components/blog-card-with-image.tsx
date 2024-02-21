@@ -7,8 +7,9 @@ export function BlogCardWithImage() {
     <Card
       shadow={false}
       className="pb-5 p-0 !border-b md:border-none border-blue-gray-100"
+      placeholder={""}
     >
-      <CardBody className="p-0 ">
+      <CardBody className="p-0" placeholder={""}>
         <div className="w-full mb-4 h-[211px] ">
           <Image
             width={768}
@@ -18,10 +19,17 @@ export function BlogCardWithImage() {
             alt=""
           />
         </div>
-        <Typography variant="h3" className="leading-[45px] mb-4 !text-gray-900">
+        <Typography
+          variant="h3"
+          className="leading-[45px] mb-4 !text-gray-900"
+          placeholder={""}
+        >
           How to Build a $24 Billion Dollar Company in Just 2 Years.
         </Typography>
-        <Typography className="font-normal mb-4 !text-base text-gray-500 ">
+        <Typography
+          className="font-normal mb-4 !text-base text-gray-500"
+          placeholder={""}
+        >
           I&apos;ve come to the conclusion that 50% of folks in this world
           don&apos;t even spend enough time alone with their thoughts to have
           their own opinions. They haven&apos;t done the work to decide what
@@ -38,10 +46,16 @@ export function BlogCardWithImage() {
             />
           </div>
           <div>
-            <Typography className="!font-bold !text-sm text-gray-900">
+            <Typography
+              className="!font-bold !text-sm text-gray-900"
+              placeholder={""}
+            >
               Andrew Peterson
             </Typography>
-            <Typography className="!font-normal !text-xs text-gray-500 ">
+            <Typography
+              className="!font-normal !text-xs text-gray-500 "
+              placeholder={""}
+            >
               Redactor
             </Typography>
           </div>

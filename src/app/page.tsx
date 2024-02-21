@@ -25,7 +25,9 @@ export default function Campaign() {
       <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
         <BlogPosts />
       </ScrollAnimation>
-      <Footer />
+      <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
+        <Footer />
+      </ScrollAnimation>
     </>
   );
 }
