@@ -70,7 +70,13 @@ export function Navbar() {
     );
   };
 
-  const MobileNavItem = ({ title, anchor }: { title: string; anchor: string }) => {
+  const MobileNavItem = ({
+    title,
+    anchor,
+  }: {
+    title: string;
+    anchor: string;
+  }) => {
     return (
       <li>
         <Typography
@@ -111,7 +117,9 @@ export function Navbar() {
           }`}
         >
           {NAV_MENU.map((item) => (
-            <NavItem title={item?.title} anchor={item?.anchor} />
+            <div key={item?.title}>
+              <NavItem title={item?.title} anchor={item?.anchor} />
+            </div>
           ))}
         </ul>
         <div className="hidden"></div>
@@ -134,7 +142,9 @@ export function Navbar() {
         <div className="container mx-auto bg-white rounded-lg py-4 px-6 mt-3 border-t border-gray-200">
           <ul className="flex flex-col gap-4">
             {NAV_MENU.map((item) => (
-              <MobileNavItem title={item?.title} anchor={item?.anchor} />
+              <div key={item?.title}>
+                <MobileNavItem title={item?.title} anchor={item?.anchor} />
+              </div>
             ))}
           </ul>
         </div>
