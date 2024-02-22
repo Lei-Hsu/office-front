@@ -6,14 +6,11 @@ import {
   IconButton,
   Typography,
 } from "@material-tailwind/react";
+import { client } from "../sanity";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { scrollToAnchor } from "@/util/scrollTo";
 
 const NAV_MENU = [
-  {
-    title: "Home",
-    anchor: "home",
-  },
   {
     title: "About Us",
     anchor: "aboutUs",
@@ -22,15 +19,43 @@ const NAV_MENU = [
     title: "Team Members",
     anchor: "teamMember",
   },
+  {
+    title: "Contact Us",
+    anchor: "contact",
+  },
 ];
+
+interface DataItem {
+  logoName: string;
+}
+
+type DataArrayType = Array<DataItem>;
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
   const [isScrolling, setIsScrolling] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [data, setData] = React.useState<DataItem>();
 
   function handleOpen() {
     setOpen((cur) => !cur);
   }
+
+  React.useEffect(() => {
+    setIsLoading(true);
+    client
+      .fetch(
+        `*[_type == "banner"]{
+          logoName
+        }`
+      )
+      .then((data: DataArrayType) => {
+        setData(data?.[0]);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -107,7 +132,7 @@ export function Navbar() {
           placeholder={undefined}
           onClick={() => scrollToAnchor("home")}
         >
-          Megawood Capital
+          {data?.logoName || "Megawood Capital"}
         </Typography>
         <ul
           className={`ml-10 hidden items-center gap-6 lg:flex ${

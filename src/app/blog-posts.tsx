@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { client } from "../sanity";
 
 import { Button, Typography, Card, CardBody } from "@material-tailwind/react";
 import {
@@ -11,6 +12,12 @@ import {
 
 import BlogCardWithImage from "@/components/blog-card-with-image";
 import SimpleBlogCard from "@/components/simple-blog-card";
+
+interface DataItem {
+  openNews: boolean;
+}
+
+type DataArrayType = Array<DataItem>;
 
 const SIMPLE_CONTENT = [
   {
@@ -34,6 +41,29 @@ const SIMPLE_CONTENT = [
 ];
 
 export function BlogPost() {
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [data, setData] = React.useState<DataItem>();
+
+  React.useEffect(() => {
+    setIsLoading(true);
+    client
+      .fetch(
+        `*[_type == "news"]{
+          openNews
+        }`
+      )
+      .then((data: DataArrayType) => {
+        setData(data?.[0]);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
+  if(!data?.openNews) {
+    return <></>
+  }
+
   return (
     <section className="w-full max-w-6xl mx-auto flex flex-col items-center px-4 py-20">
       <Button color="gray" className="mb-3" size="sm" placeholder={""}>

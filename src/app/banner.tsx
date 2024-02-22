@@ -9,11 +9,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 interface DataItem {
   textSectionOne: string;
   textSectionTwo: string;
-  textSectionThree: string;
   bannerImage: string;
-  url_x: string;
-  url_fb: string;
-  url_ig: string;
 }
 
 type DataArrayType = Array<DataItem>;
@@ -21,11 +17,6 @@ type DataArrayType = Array<DataItem>;
 function Banner() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [data, setData] = React.useState<DataItem>();
-
-  const hasConnectUsUrl = React.useMemo(
-    () => data?.url_fb?.length || data?.url_ig?.length || data?.url_x?.length,
-    [data]
-  );
 
   React.useEffect(() => {
     setIsLoading(true);
@@ -83,60 +74,6 @@ function Banner() {
               {data?.textSectionTwo || ""}
             </Typography>
           </ScrollAnimation>
-          {hasConnectUsUrl && (
-            <>
-              <Typography
-                variant="paragraph"
-                color="white"
-                className="mt-1 mb-7 font-medium uppercase"
-                placeholder={""}
-              >
-                {data?.textSectionThree || ""}
-              </Typography>
-              <div className="gap-8 flex">
-                {data?.url_x && (
-                  <IconButton
-                    variant="text"
-                    color="white"
-                    size="sm"
-                    className="cursor-pointer"
-                    placeholder={""}
-                  >
-                    <a href={data?.url_x} target="_blank">
-                      <i className="fa-brands fa-twitter text-base" />
-                    </a>
-                  </IconButton>
-                )}
-                {data?.url_fb && (
-                  <IconButton
-                    variant="text"
-                    color="white"
-                    size="sm"
-                    className="cursor-pointer"
-                    placeholder={""}
-                  >
-                    <a href={data?.url_fb} target="_blank">
-                      <i className="fa-brands fa-facebook text-base" />
-                    </a>
-                  </IconButton>
-                )}
-
-                {data?.url_ig && (
-                  <IconButton
-                    variant="text"
-                    color="white"
-                    size="sm"
-                    className="cursor-pointer"
-                    placeholder={""}
-                  >
-                    <a href={data?.url_ig} target="_blank">
-                      <i className="fa-brands fa-instagram text-base" />
-                    </a>
-                  </IconButton>
-                )}
-              </div>
-            </>
-          )}
         </div>
       </div>
     </div>
