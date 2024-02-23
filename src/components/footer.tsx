@@ -43,7 +43,7 @@ export function Footer() {
   return (
     <footer id="contact" className="px-8">
       <div className="container mx-auto">
-        <div className="flex flex-wrap items-end justify-center gap-y-4 gap-x-8 border-t border-blue-gray-50 py-6 md:justify-between">
+        <div className="flex flex-wrap items-end justify-start gap-y-4 gap-x-8 border-t border-blue-gray-50 py-6 md:justify-between">
           <div className="text-center md:text-start md:flex">
             <Typography
               variant="h4"
@@ -66,12 +66,13 @@ export function Footer() {
                   </a>
                 )}
                 {data?.email && (
-                  <a
-                    href={`mailto:${data?.email}`}
-                    className="text-gray-700 text-left font-extralight"
-                    style={{ textDecoration: "none" }}
-                  >
-                    {data?.email}
+                  <a href={`mailto:${data?.email}`}>
+                    <Typography
+                      className="font-normal !text-gray-700 text-left "
+                      placeholder={""}
+                    >
+                      {data?.email}
+                    </Typography>
                   </a>
                 )}
               </div>
