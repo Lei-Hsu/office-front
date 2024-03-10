@@ -60,7 +60,7 @@ export function Content() {
 
   return (
     <section id="aboutUs" className="py-2 px-8 pt-10">
-      <div className="mx-auto max-w-screen-md">
+      <div className="mx-auto max-w-screen-lg">
         <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
           <Typography
             variant="h2"

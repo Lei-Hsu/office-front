@@ -61,7 +61,7 @@ export function Comments() {
   return (
     <section
       id="teamMember"
-      className="w-full max-w-2xl mx-auto flex flex-col px-5 pb-20 pt-20"
+      className="mx-auto  max-w-screen-lg flex flex-col px-5 pb-20 pt-20"
     >
       <Typography
         variant="h2"
@@ -71,7 +71,7 @@ export function Comments() {
       >
         Team Members
       </Typography>
-      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
         {data?.length && (
           <>
             {data?.map((props, idx) => (

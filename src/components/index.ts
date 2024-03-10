@@ -12,3 +12,6 @@ export * from "./simple-blog-card";
 export * from "./fixed-plugin";
 export * from "./default-skeleton"
 export * from "./card-skeleton"
+export * from "./newsNav"
+export * from "./newsItem"
+export * from "./breadcrumb"
