@@ -14,6 +14,7 @@ import { ROUTERS } from "@/enums/routers";
 
 interface DataItem {
   title: string;
+  subtitle: string;
   content: string;
   slug: string;
   id: string;
@@ -50,6 +51,7 @@ const Index: React.FC = () => {
       .then((data) => {
         const res = data?.map((item: DataItem) => ({
           title: item?.title,
+          subtitle: item?.subtitle,
           content: toHTML({
             projectId:
               process.env.NEXT_PUBLIC_API_KEY || process.env.API_KEY || "",
@@ -131,6 +133,8 @@ const Index: React.FC = () => {
 
   return (
     <div>
+      <title>{news?.title}</title>
+      <meta name="description" content={news?.subtitle} />
       <NewsNavbar />
       <section className="w-full flex flex-col px-4 py-20 mx-auto  max-w-screen-lg">
         <Breadcrumb crumbs={CRUMBS_DATA} />

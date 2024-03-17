@@ -10,12 +10,37 @@ import Banner from "./banner";
 import Content from "./content";
 import Comments from "./comments";
 import BlogPosts from "./blog-posts";
+import { client } from "../sanity";
 
 import "./globals.css";
 
+interface DataItem {
+  title: string;
+  description: string;
+}
+
+type DataArrayType = Array<DataItem>;
+
 export default function Campaign() {
+  const [data, setData] = React.useState<DataItem>();
+
+  React.useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "metadata"]{
+          title,
+          description
+        }`
+      )
+      .then((data: DataArrayType) => {
+        setData(data?.[0]);
+      });
+  }, []);
+
   return (
     <>
+      <title>{data?.title}</title>
+      <meta name="description" content={data?.description} />
       <Navbar />
       <ScrollAnimation animateIn="fadeIn">
         <Banner />

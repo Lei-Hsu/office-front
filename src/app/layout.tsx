@@ -1,5 +1,4 @@
 import "./globals.css";
-import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { FixedPlugin, Layout } from "@/components";
 
@@ -8,12 +7,6 @@ const roboto = Roboto({
   weight: ["300", "400", "500", "700", "900"],
   display: "swap",
 });
-
-export const metadata: Metadata = {
-  title: "MC beta site",
-  description:
-    "MC beta site",
-};
 
 export default function RootLayout({
   children,
