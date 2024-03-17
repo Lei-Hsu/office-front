@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 
 interface DataItem {
   title: string;
+  subtitle: string;
   content: string;
   slug: string;
   id: string;
@@ -34,8 +35,10 @@ const useGetNews = ({ limit }: UseGetNews) => {
           _id,
           title,
           slug,
+          subtitle,
+          date,
           content
-        }`
+        } | order(date desc)`
       )
       .then((data: DataItemResponse[]) => {
         let limitNews = data;
@@ -46,6 +49,7 @@ const useGetNews = ({ limit }: UseGetNews) => {
 
         const res = limitNews?.map((item) => ({
           title: item?.title,
+          subtitle: item?.subtitle,
           content: toHTML({
             projectId:
               process.env.NEXT_PUBLIC_API_KEY || process.env.API_KEY || "",

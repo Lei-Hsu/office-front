@@ -20,8 +20,8 @@ const NAV_MENU = [
     anchor: "teamMember",
   },
   {
-    title: "Contact Us",
-    anchor: "contact",
+    title: "News",
+    anchor: "news",
   },
 ];
 

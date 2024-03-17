@@ -11,6 +11,8 @@ import Content from "./content";
 import Comments from "./comments";
 import BlogPosts from "./blog-posts";
 
+import "./globals.css";
+
 export default function Campaign() {
   return (
     <>

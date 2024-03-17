@@ -13,3 +13,32 @@
     opacity: 1;
   }
 }
+
+.html-h-1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.html-h-2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.html-h-3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.html-p {
+  font-size: 1rem;
+  line-height: 2;
+  color: rgb(10 10 10);
+}
+
+.html-ol {
+  list-style-type: decimal;
+}
+
+.html-mb-2 {
+  margin-bottom: 2rem;
+}
